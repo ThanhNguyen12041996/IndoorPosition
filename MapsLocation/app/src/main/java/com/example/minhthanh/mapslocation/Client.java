@@ -1,6 +1,5 @@
 package com.example.minhthanh.mapslocation;
 import android.location.Location;
-import android.net.wifi.WifiManager;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -27,14 +26,12 @@ public class Client  extends Thread {
     double LongLn = 0;
 
     Thread client;
-    WifiManager wifiManager;
     Socket connectionSocket = null;
 
-    public Client(String android_id, EditText edit, String WifiRouter, WifiManager wifiManager)  {
+    public Client(String android_id, EditText edit, String WifiRouter)  {
 
         this.android_id = android_id;
         this.Wifirouter = WifiRouter;
-        this.wifiManager = wifiManager;
         GetData(edit);
     }
 
@@ -68,7 +65,6 @@ public class Client  extends Thread {
                         if (Coodinates[0].equals("Finish")) {
                             Log.d("Thread2Nhanduoctoado", String.valueOf(LatLn) + "," + String.valueOf(LongLn));
                             SetLocation(LatLn, LongLn);
-
                         }
 
                     } catch (ClassNotFoundException e) {

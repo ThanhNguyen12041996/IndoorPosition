@@ -18,8 +18,8 @@ public class LocalizationThreadHandler
 {
     ObjectInputStream InputStream;
     PrintWriter OutPutStream;
-    android.os.Handler handler = new android.os.Handler();
     WifiManager wifimanager;
+
 
     public LocalizationThreadHandler(final WifiManager wifimanager)
     {
@@ -48,9 +48,9 @@ public class LocalizationThreadHandler
         t.start();
     }
 
-    public void Send(String android_id, long timeStamp, int rss)
+    public void Send(String android_id, long timeStamp,long timeStampEnd,String BSSD, int rss)
     {
-         OutPutStream.println("RSS;" + android_id + ";" + timeStamp + ";" +rss);
+         OutPutStream.println("RSS;" + android_id + ";" + timeStamp + ";" +timeStampEnd+ ";" +BSSD+ ";" +rss);
          OutPutStream.flush();
     }
 }
