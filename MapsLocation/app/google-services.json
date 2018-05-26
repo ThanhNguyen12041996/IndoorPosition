@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "915042244626",
+    "firebase_url": "https://indoornavigationdatabase.firebaseio.com",
+    "project_id": "indoornavigationdatabase",
+    "storage_bucket": "indoornavigationdatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915042244626:android:783b67421ef31053",
+        "android_client_info": {
+          "package_name": "com.example.minhthanh.mapslocation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915042244626-uqgsi1mb5hp779oro8pht1oj882na1ir.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.minhthanh.mapslocation",
+            "certificate_hash": "32daa96543309859548c831ac638c77bb04c983f"
+          }
+        },
+        {
+          "client_id": "915042244626-qsuaitc41vc8fi6f6ih2nlor8o8o4596.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDProtrxx-h6UGIO9j-U7TSygyQxMdMUXY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915042244626-qsuaitc41vc8fi6f6ih2nlor8o8o4596.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

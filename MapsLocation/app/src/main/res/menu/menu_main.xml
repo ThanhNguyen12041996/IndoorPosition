@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.rashish.myapplication.MainActivity">
+
+    <item
+        android:id="@+id/action"
+        android:icon="@android:drawable/ic_menu_search"
+        android:orderInCategory="50"
+        android:title="Button title"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@android:drawable/ic_menu_directions"
+        android:orderInCategory="51"
+        android:title="Button title"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/cancelDicrection"
+        android:icon="@android:drawable/ic_menu_revert"
+        android:orderInCategory="52"
+        android:title="Button title"
+        app:showAsAction="always" />
+</menu>

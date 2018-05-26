@@ -1,3 +1,4 @@
+
 <RelativeLayout
  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -5,6 +6,7 @@
     android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical">
+
 
     <fragment
         android:id="@+id/map"
@@ -18,44 +20,26 @@ android:orientation="vertical">
 
     <Button
         android:id="@+id/buttonTracking"
-        android:layout_width="110dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:background="#359c5e"
+        android:background="?attr/colorPrimary"
         android:onClick="onClick"
         android:padding="8dp"
         android:text="Tracking"
-        android:textColor="#ffffff"
-        android:layout_alignBaseline="@+id/buttonLocalization"
-        android:layout_alignBottom="@+id/buttonLocalization"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="13dp" />
-
-
-    <EditText
-        android:id="@+id/edit_text"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:gravity="right"
-        android:inputType="text|textFilter"
-        android:layout_alignParentStart="true" />
-
-
-    <Button
-        android:id="@+id/buttonLocalization"
-        android:layout_width="143dp"
-        android:layout_height="wrap_content"
+        android:layout_marginEnd="82dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="11dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="#359c5e"
-        android:onClick="onClick"
-        android:padding="8dp"
-        android:text="Localization"
-        android:textColor="#ffffff" />
+        android:layout_alignEnd="@+id/fragment_container" />
+
+
+    <RelativeLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="380dp"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        >
+    </RelativeLayout>
+
 
 </RelativeLayout>

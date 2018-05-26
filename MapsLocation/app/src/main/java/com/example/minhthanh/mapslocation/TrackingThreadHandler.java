@@ -53,9 +53,9 @@ public class TrackingThreadHandler
         t.start();
     }
 
-    public void Send(String android_id, long timeStamp, long timeStampEnd,String BSSD, int rss)
+    public void Send(String DataArray)
     {
-        OutPutStream.println("RSS;" + android_id + ";" + timeStamp + ";" +timeStampEnd+ ";" +BSSD+ ";" +rss);
+        OutPutStream.println(DataArray);
         OutPutStream.flush();
     }
 }
