@@ -14,50 +14,40 @@
         android:inputType="text|textFilter"
         android:onClick="onClick"
         android:text="Your Location"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/button3" />
 
     <EditText
         android:id="@+id/edit_Destination"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/edit_textSource"
         android:gravity="left"
         android:inputType="text|textFilter"
         android:onClick="onClick"
         android:text="Your Destination"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/edit_textSource"
+        android:layout_alignStart="@+id/edit_textSource" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/edit_Destination"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/button2"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="13dp"
+
         android:background="@android:drawable/ic_menu_send"
-        android:backgroundTint="@color/wallet_link_text_light" />
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:layout_alignBottom="@+id/imageView4"
+        android:layout_alignParentEnd="true" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="28dp"
         android:background="@android:color/holo_orange_light"
-        app:srcCompat="@android:drawable/ic_menu_myplaces"
-        android:layout_alignBottom="@+id/imageView2" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_light"
-        app:srcCompat="@android:drawable/ic_menu_recent_history"
+        app:srcCompat="@drawable/ic_action_direct"
         android:layout_below="@+id/edit_Destination"
-        android:layout_alignEnd="@+id/edit_Destination" />
+        android:layout_toEndOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/textView3"
@@ -74,20 +64,58 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView2"
-        android:layout_alignStart="@+id/button3"
+        android:layout_alignBottom="@+id/imageView5"
         android:text="minutes"
         android:textColor="@color/colorAccent"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/edit_Destination"
+        android:layout_alignTop="@+id/textView3" />
+
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_action_circle"
+        android:layout_above="@+id/button3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/ic_action_locate" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_Destination"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/textView4"
+        android:background="@android:color/holo_red_light"
+        app:srcCompat="@drawable/ic_action_time" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="5dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/textView4"
-        android:background="@drawable/mr_dialog_close_light"
-        android:backgroundTint="@android:color/holo_red_dark" />
+        android:background="@drawable/ic_dialog_close_light" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_action_fromto"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button2"
+        android:layout_above="@+id/imageView4" />
 
 </RelativeLayout>

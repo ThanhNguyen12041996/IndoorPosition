@@ -7,4 +7,5 @@ package com.example.minhthanh.mapslocation;
 public interface IShowDirection {
     void SendDirection(String source, String destination);
     void SendRemoveFragment();
+    void SendLocationToDetermine(String nodeLocation);
 }

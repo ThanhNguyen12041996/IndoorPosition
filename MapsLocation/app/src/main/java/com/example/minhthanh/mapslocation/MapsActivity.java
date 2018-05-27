@@ -23,6 +23,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -72,6 +73,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Polyline mypoline;
     TimeDistance timeDistance = new TimeDistance();
     float DistanceuptoSpeed;
+    ListView lv;
 
     String[] APsList = {"ac:86:74:49:c0:cb", "ac:86:74:49:c0:eb", "f0:9f:c2:a5:7b:58",
             "ac:86:74:49:c0:f3", "ac:86:74:49:ad:6b", "ac:86:74:49:c0:e3", "ac:86:74:49:c1:03", "f0:9f:c2:d2:dc:48",
@@ -98,6 +100,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     FragmentTransaction fragmentTransaction;
     DirectionActivity ft;
     private  LatLng position1,position2;
+    SearchLocationBar fs;
 
     private static final LatLng linee1 = new LatLng(10.762781204357683,106.68152790516613);
     private static final LatLng linee2 = new LatLng(10.762752219074198,106.6815198585391);
@@ -226,10 +229,38 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void SendRemoveFragment() {
+        if(ft.isVisible()){
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, ft);
         fragmentTransaction.hide(ft);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();}
+        else if(fs.isVisible())
+        {
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_search, fs);
+            fragmentTransaction.hide(fs);
+            fragmentTransaction.commit();
+        }
+    }
+    @Override
+    public void SendLocationToDetermine(final String nodeLocation) {
+
+        databaseReference.child("Coordinates").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+
+            public void onDataChange(DataSnapshot snap) {
+
+                if (mCurrentLocation != null)
+                    mCurrentLocation.remove();
+                if (mypoline != null)
+                    mypoline.remove();
+                ChangeLocationDirection(new LatLng((double) snap.child(nodeLocation).child("latln").getValue(),(double) snap.child(nodeLocation).child("longln").getValue()));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     @Override
@@ -288,12 +319,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         RoomList.add(P11A);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         ft = new DirectionActivity();
+        fs = new SearchLocationBar();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
+       // MenuItem searchitem = menu.findItem(R.id.action);
+      // return super.onCreateOptionsMenu(menu);
         return true;
     }
 
@@ -315,7 +349,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mCurrentLocation.remove();
             return true;
         }
-        return super.onOptionsItemSelected(item);
+        else {
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_search, fs);
+            fragmentTransaction.show(fs);
+            fragmentTransaction.commit();
+            return true;
+            //searchView.setVisibility(View.VISIBLE);
+        }
+
+       // return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -350,7 +393,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .add(chin).add(muoi).add(muoimot).width(5).color(Color.BLUE).geodesic(true);
         mMap.addPolyline(option);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(mot));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
 
 
         for (i = 0; i <= 9; i++)
@@ -477,9 +520,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (mCurrentLocation != null)
             mCurrentLocation.remove();
 
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
+        markerOptions.position(new LatLng(location.getLatitude(), location.getLongitude()));
         markerOptions.title("Current Position");
         mCurrentLocation = mMap.addMarker(markerOptions);
         if (mGoogleApiClient != null) {
@@ -499,13 +541,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .strokeWidth(1 / 4));
     }
 
-    private void ChangeLocationDirection(LatLng posis1)
+    private void ChangeLocationDirection(LatLng posis)
     {
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(posis1);
+        markerOptions.position(posis);
         markerOptions.title("Current Position");
         mCurrentLocation = mMap.addMarker(markerOptions);
-
     }
 
     protected Marker createMaker(LatLng Latlng, String title) {

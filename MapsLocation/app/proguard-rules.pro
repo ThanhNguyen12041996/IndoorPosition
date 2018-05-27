@@ -24,3 +24,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -keep class com.example.minhthanh.mapslocation.MapsActivity.model.** { *; }
+-keep class android.support.v7.widget.SearchView { *; }
